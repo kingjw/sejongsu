@@ -23,6 +23,9 @@ router.get('/sejongsu/main', function(req, res) {
 router.get('/sejongsu/mypage', function(req, res) {
   res.render('mypage', { title: 'Express' });
 });
+router.get('/sejongsu/proflist', function(req, res) {
+  res.render('ps', { title: 'Express' });
+});
 
 
 router.post('/gologin',function(req,res,next){

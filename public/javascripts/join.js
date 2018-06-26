@@ -99,6 +99,7 @@ window.onload=function(){
               if(result['result']=='success'){
                 alert(user_id + '님, 가입이 완료되었습니다!\n로그인 해 주세요.');
                 $(window).attr('location','/sejongsu/login');
+
               }//result if
             },
             error:function(error){

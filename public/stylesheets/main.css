@@ -91,19 +91,19 @@ margin-top: 20%;
 }
 .four_Button:nth-child(1):hover{
     cursor: pointer;
-    background-color:purple;
+    background-color:red;
 }
 .four_Button:nth-child(2):hover{
     cursor: pointer;
-    background-color:orangered;
+    background-color:red;
 }
 .four_Button:nth-child(3):hover{
     cursor: pointer;
-    background-color:green;
+    background-color:red;
 }
 .four_Button:nth-child(4):hover{
     cursor: pointer;
-    background-color:blue;
+    background-color:red;
 }
 td{
     background: none;

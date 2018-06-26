@@ -5,9 +5,19 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+var session = require('express-session');
 
+var MySQLStore = require('express-mysql-session')(session);
+var options={
+  host: 'localhost',
+  port: 3306,
+  user: 'root',
+  password: '7dnjf29dlf',
+  database: 'ssu'
+};
+var users = require('./routes/users');
+var index = require('./routes/index');
+var msg = require('./routes/msg');
 var app = express();
 
 // view engine setup
@@ -17,13 +27,20 @@ app.set('view engine', 'ejs');
 app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret: 'sdqe231323',
+  resave: false,
+  saveUninitialized: true,
+  store: new MySQLStore(options)
+}));
 
-app.use('/', routes);
+app.use('/', index);
 app.use('/users', users);
-
+app.use('/msg', msg);
+// app.use('/', index);
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');

@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#9a0007">
+    <title>
+        <%= title %>
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/main.css" />
+</head>
+
+<body>
+    <div id="top_Div">
+        <div id="nav_Div">
+            <div id="logo_Div">
+                <img src="/images/logo4.png" id="logo_Image" height="100%">
+            </div>
+            <div id="user_Input">
+                <div id="help_Vertical">
+                    <div id="message_Div" data-toggle="modal" data-target="#myModal">
+                        <img id="message_Update" src="/images/message_Icon.png" height="13%" />
+                    </div>
+                    <div>
+                        &nbsp;
+                        <strong style="cursor:pointer" onclick="myFunction()">
+                            <%= title %>
+                        </strong>
+                    </div>
+                    <div>
+                        <img src="/images/logout.png" id="logout" height="8%" style="cursor: pointer;" onclick="location.href='/logout'" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="bottom_Div">
+
+   
+            <div id="four_button_Div">
+                <div class="four_Button">
+                    <div class="top_Part_Button">
+                        <img class="mypageImage"src="/images/user.png" width="20%" height="auto">
+                    </div>
+                    <div class="bottom_Part_Button">
+                        MY PAGE
+                    </div>
+                </div>
+
+                <div class="four_Button">
+
+                    <div class="top_Part_Button">
+                        <img class="mypageImage"src="/images/graph.png" width="20%" height="auto">
+                    </div>
+                    <div class="bottom_Part_Button">
+                        Spec 비교
+                    </div>
+                </div>
+
+
+           
+                <div class="four_Button">
+                    <div class="top_Part_Button">
+                        <img class="mypageImage"src="/images/users.png" width="20%" height="auto">
+                    </div>
+                    <div class="bottom_Part_Button">
+                        유저별 Spec
+                    </div>
+                </div>
+
+                <div class="four_Button">
+
+                    <div class="top_Part_Button">
+                        <img class="mypageImage"src="/images/professor.png" width="20%" height="auto">
+                    </div>
+                    <div class="bottom_Part_Button">
+                        Professor
+                    </div>
+                </div>
+                </div>
+     
+
+            </button>
+
+            <!-- The Modal -->
+            <div class="modal fade" id="myModal">
+                <div class="modal-dialog" modal-lg>
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header" style="background-color: brown">
+                            <h4 class="modal-title" style="color: white">Message</h4>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>보낸사람</th>
+                                        <th>제목</th>
+                                        <th>날짜</th>
+                                        <th>읽음</th>
+                                    </tr>
+                                </thead>
+                                <tbody id='msg_list'>
+                                    <!-- msg list show -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button id='msgListCloseBtn' type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- msg detail show -->
+            <div id='msg_detail'></div>
+
+
+        </div>
+        <script>
+            $('input').css('background', 'none');
+            $('textarea').css('background', 'none');
+            $('.four_Button:eq(0)').click(function () {
+                $(window).attr('location', '/mypage');
+            })
+            $('.four_Button:eq(1)').click(function () {
+                $(window).attr('location', '/specCompare');
+            })
+            $('.four_Button:eq(2)').click(function () {
+                $(window).attr('location', '/userSearch');
+            })
+
+            function newMsgCheck() {
+                var blink = document.getElementById("message_Update");
+                blink.style.visibility = blink.style.visibility == "" ? "hidden" : "";
+            }
+            var newMsg;
+
+
+            $.get('/msg/msgList', function (data) {
+                $('#msg_list').html(data);
+            });
+
+            $.get('/msg/msgDetail', function (data) {
+                $('#msg_detail').html(data);
+            });
+
+
+            $('#msgListCloseBtn').click(function () {
+                clearInterval(newMsg);
+                document.getElementById("message_Update").style.visibility = 'visible';
+            });
+        </script>
+</body>
+
+</html>

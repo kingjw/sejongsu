@@ -14,7 +14,9 @@ router.get('/sejongsu/join', function(req, res) {
 });
 router.get('/sejongsu/joinP', function(req, res) {
   res.render('joinP', { title: 'Express' });
-
+});
+router.get('/sejongsu/main', function(req, res) {
+  res.render('main', { title: 'Express' });
 });
 
 module.exports = router;

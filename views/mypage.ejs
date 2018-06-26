@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#9a0007">
+    <title><%= user %>님의 마이페이지</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/mypage.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="nav_Div">
+        <div id="logo_Div">
+            <img src="/images/logo4.png" id="logo_Image" height="100%">
+        </div>
+        <div id="user_Input">
+            <div id="help_Vertical">
+                <div id="message_Div" data-toggle="modal" data-target="#myModal">
+                    <img id="message_Update" src="/images/message_Icon.png" height="13%"/>
+                    <!-- <img id="message" src="/images/message_Icon.png" height="13%" style="display:none" /> -->
+                </div>
+
+                <div>
+                    &nbsp;
+                    <strong style="cursor:pointer"> <%= user %></strong>
+                </div>
+
+                <div>
+                    <img src="/images/logout.png" height="8%" style="cursor: pointer;" onclick="location.href='/logout'"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="main_Div">
+        <div id="menu_Div">
+            <div id="mypage_Content">
+                <p style="cursor:pointer"><%= title %></p>
+            </div>
+
+            <div class="mypage_Menu">
+                <p id='my_spec'>MY 스펙</p>
+            </div>
+
+
+            <div class="mypage_Menu">
+                <p>취업 일지</p>
+            </div>
+
+        </div>
+
+        <div id="content_Div">
+
+            <div id="myspec">
+                <div class="container-fluid">
+
+                    <div class="original_Form row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-12" id="job">
+                            <label for="firstName" class="col-sm-12 control-label">직군</label>
+                            <input type="text" id="score" value="<%= rows[0].want_job %>"  readonly class="form-control">
+                        </div>
+
+
+
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                            <label for="firstName" class="col-sm-12 control-label">학점</label>
+                            <input type="text" id="score" value="<%= rows[0].grade %>"  readonly class="form-control">
+                        </div>
+
+
+
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                            <label for="firstName" class="col-sm-12 control-label">토익-Toeic</label>
+                            <input type="text" id="toeic" value="<%= rows[0].toeic %>"  readonly class="form-control">
+                        </div>
+
+
+
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                            <label for="firstName" class="col-sm-12 control-label">토스-Toeic Speaking</label>
+                            <input type="text" id="score_toss" value= <%= rows[0].toss_num %>  readonly class="form-control">
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                            <label for="firstName" class="col-sm-12 control-label">오픽-Opic</label>
+                            <input type="text" id="score_opic" value= <%= rows[0].opic_num %>  readonly class="form-control">
+                        </div>
+
+
+
+
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                            <label for="firstName" class="col-sm-12 control-label">봉사활동 횟수</label>
+                            <input type="text" id="score" value= "<%= rows[0].volunteer %>"  readonly class="form-control">
+                        </div>
+
+
+
+
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                            <label for="firstName" class="col-sm-12 control-label">인턴 경험</label>
+                            <input type="text" id="score" value="<%= rows[0].intern %>"  readonly class="form-control">
+                        </div>
+
+
+
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                            <label for="firstName" class="col-sm-12 control-label">공모전 수상</label>
+                            <input type="text" id="score" value="<%= rows[0].competition %>"  readonly class="form-control">
+                        </div>
+
+
+
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                            <label for="firstName" class="col-sm-12 control-label">해외 연수</label>
+                            <input type="text" id="score" value="<%= rows[0].activity  %>"  readonly class="form-control">
+                        </div>
+
+
+
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                            <label for="firstName" class="col-sm-12 control-label">자격증</label>
+                            <input type="text" id="score" value="<%= rows[0].certificate  %>"  readonly class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="when_Reform row">
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-12" id="job">
+                                <label for="firstName" class="col-sm-12 control-label">직군</label>
+                                <select class="form-control" id="job_Part">
+                                    <option>소프트웨어/IT</option>>
+                                    <option>경영/재무</option>
+                                    <option>마케팅</option>
+                                    <option>기타</option>
+                                </select>
+                            </div>
+
+
+
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                <label for="firstName" class="col-sm-12 control-label">학점</label>
+                                <input type="text" id="score" value=<%= rows[0].grade %>  class="form-control">
+
+                            </div>
+
+
+
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                <label for="firstName" class="col-sm-12 control-label">토익-Toeic</label>
+                                <input type="text" id="toeic" value=<%= rows[0].toeic %> class="form-control">
+                            </div>
+
+
+
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                <label for="firstName" class="col-sm-12 control-label">토스-Toeic Speaking</label>
+                                <select class="form-control"  id="toss">
+                                    <option>미응시</option>
+                                    <option>Level1</option>
+                                    <option>Level2</option>
+                                    <option>Level3</option>
+                                    <option>Level4</option>
+                                    <option>Level5</option>
+                                    <option>Level6</option>
+                                    <option>Level7</option>
+                                    <option>Level8</option>
+                                </select>
+                            </div>
+
+
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                <label for="firstName" class="col-sm-12 control-label">오픽-Opic</label>
+                                <select class="form-control" id="opic">
+                                    <option>미응시</option>
+                                    <option>NL</option>
+                                    <option>NM</option>
+                                    <option>NH</option>
+                                    <option>IL</option>
+                                    <option>IM</option>
+                                    <option>IH</option>
+                                    <option>AL</option>
+                                </select>
+                            </div>
+
+
+
+
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                <label for="firstName" class="col-sm-12 control-label">봉사활동 횟수</label>
+                                <select class="form-control" id="volunteer">
+                                    <option>0번</option>
+                                    <option>1번</option>
+                                    <option>2번</option>
+                                    <option>3번</option>
+                                    <option>4번</option>
+                                    <option>5회이상</option>
+                                </select>
+                            </div>
+
+
+
+
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                <label for="firstName" class="col-sm-12 control-label">인턴 경험</label>
+                                <select class="form-control" id="intern">
+                                    <option>0번</option>>
+                                    <option>1번</option>
+                                    <option>2번</option>
+                                    <option>3번</option>
+                                    <option>4번</option>
+                                    <option>5회이상</option>
+                                </select>
+                            </div>
+
+
+
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                <label for="firstName" class="col-sm-12 control-label">공모전 수상</label>
+                                <select class="form-control" id="Competition">
+                                    <option>0번</option>
+                                    <option>1번</option>
+                                    <option>2번</option>
+                                    <option>3번</option>
+                                    <option>4번</option>
+                                    <option>5회이상</option>
+                                </select>
+                            </div>
+
+
+
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                <label for="firstName" class="col-sm-12 control-label">해외 연수</label>
+                                <select class="form-control" id="aborad">
+                                    <option>0번</option>>
+                                    <option>1번</option>
+                                    <option>2번</option>
+                                    <option>3번</option>
+                                    <option>4번</option>
+                                    <option>5회이상</option>
+                                </select>
+                            </div>
+
+
+
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                                <label for="firstName" class="col-sm-12 control-label">자격증</label>
+                                <select class="form-control" id="certificate">
+                                    <option>0개</option>>
+                                    <option>1개</option>
+                                    <option>2개</option>
+                                    <option>3개</option>
+                                    <option>4개</option>
+                                    <option>5개이상</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="reform">
+                            <button type="button" id="reform_Button" class="btn btn-danger btn-block">수정</button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="two_Button_Spec col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <button type="button" id="cancel_Button" class="btn btn-danger btn-block">취소</button>
+                        </div>
+
+                        <div class="two_Button_Spec col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <button type="button" id="ok_Button" class="btn btn-danger btn-block">확인</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="diary">
+                <div class="container-fluid">
+
+                    <h3>취업 일지</h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="date">날짜</th>
+                                <th class="content">내용</th>
+                                <th class="result">결과</th>
+                            </tr>
+                        </thead>
+                        <tbody id="upload_Table">
+                          <%
+                                            for(var i = 0; i< results.length ; i++) {
+                                              if(i > 1000) {
+                                                i++;
+                                              } else {
+                                                var item = results[i];
+                                                %>
+                            <tr>
+                                <td>
+
+                                    <input type="text" id="update_Date" value=<%- item.date %> class="update_Daily">
+                                </td>
+                                <td>
+                                    <input type="text" id="update_Content" value='<%- item.content %>' class="update_Daily">
+                                </td>
+                                <td>
+                                    <input type="text" id="update_Result" value= <%- item.result %> class="update_Daily">
+                                </td>
+                            </tr>
+                            <%
+                          }
+                        }
+                        %>
+                        </tbody>
+                    </table>
+
+                    <div class="row">
+
+                        <div class="upload_Two_Button col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <button type="button" id="reform_Button_Table" class="btn btn-danger btn-block">수정</button>
+                        </div>
+
+                        <div class="upload_Two_Button col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <button type="button" id="upload_Button" class="btn btn-danger btn-block">등록</button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="two_Button_Table_Reform col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <button type="button" id="reform_Cancel_Button_Table" class="btn btn-danger btn-block">취소</button>
+                        </div>
+
+                        <div class="two_Button_Table_Reform col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <button type="button" id="reform_Button_DB" class="btn btn-danger btn-block">확인</button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="two_Button_Table_Upload col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <button type="button" id="cancel_Button_Table" class="btn btn-danger btn-block">취소</button>
+                        </div>
+
+                        <div class="two_Button_Table_Upload col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <button type="button" id="upload_Button_DB" class="btn btn-danger btn-block">확인</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Modal -->
+    <div class="modal dialogBack" id="myModal">
+        <div class="modal-dialog" modal-lg>
+            <div class="modal-content dialogAnim">
+                <!-- Modal Header -->
+                <div class="modal-header modal_header_styler">
+                    <h4 class="modal-title" style="color: white">Message</h4>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>보낸사람</th>
+                                <th>제목</th>
+                                <th>날짜</th>
+                                <th>읽음</th>
+                            </tr>
+                        </thead>
+                        <tbody id='msg_list'>
+                            <!-- msg list show -->
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer modal_footer_styler">
+                    <button id='msgListCloseBtn' type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- msg detail show -->
+    <div id='msg_detail'></div>
+
+    <!-- msg reply show -->
+    <div id='msg_reply'></div>
+
+    <script src="/javascripts/mypage.js"></script>
+</body>
+
+</html>

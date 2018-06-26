@@ -81,4 +81,57 @@ router.post('/gologinP',function(req,res,next){
   });
 });
 
+router.post('/goJoin',function(req,res,next){//접수 버튼 클릭 시 ajax 통신하는 부분입니다.
+  var user_id = req.body.user_id;
+  var password = req.body.password;
+  var major = req.body.major;
+  var school_num = req.body.student_number;
+  var grade = req.body.grade_num;
+  var score = req.body.score;
+  var toeic = req.body.toeic;
+  var toss_num = req.body.toss_num;
+  var opic_num = req.body.opic_num;
+  var volunteer = req.body.volunteer;
+  var intern = req.body.intern;
+  var competition = req.body.competition;
+  var aboard = req.body.aboard;
+  var certificate = req.body.certificate;
+  var job_Part = req.body.job_Part;
+
+  var sql = 'insert into `ssu_user` (`user_id`,`password`,`grade_num`,`school_num`,`major`,`want_job`,`grade`,`toss_num`,`toeic`,`opic_num`,`volunteer`,`intern`,`competition`,`certificate`,`activity`) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);';
+
+  conn.query(sql,[user_id,password,grade,school_num,major,job_Part,score,toss_num,toeic,opic_num,volunteer,intern,competition,certificate,aboard],function(error,results,fields){
+    if(error){
+      console.log(error);
+      console.log('no');
+    }//if
+    else{
+      console.log(results);
+      res.send({result:'success'});//ajax 통신이 성공하면 다시 success 메세지를 보냅니다.
+    }
+  });//query
+});//router post
+
+router.post('/goJoinP',function(req,res,next){//접수 버튼 클릭 시 ajax 통신하는 부분입니다.
+  var userP_id = req.body.userP_id;
+  var name = req.body.name;
+  var password = req.body.password;
+  var major = req.body.major;
+  var email = req.body.email;
+  var introduce = req.body.introduce;
+  
+  var sql = 'insert into `ssu_userP` (`userP_id`,`name`,`password`,`major`,`email`,`introduce`) values (?,?,?,?,?,?);';
+
+  conn.query(sql,[userP_id,name,password,major,email,introduce],function(error,results,fields){
+    if(error){
+      console.log(error);
+      console.log('no');
+    }//if
+    else{
+      console.log(results);
+      res.send({result:'success'});//ajax 통신이 성공하면 다시 success 메세지를 보냅니다.
+    }
+  });//query
+});//router post
+
 module.exports = router;

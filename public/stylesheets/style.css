@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 html{
   width: 100%;
   height: 100%;
@@ -92,4 +93,13 @@ table p{
       height: 45%;
   }
 
+=======
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+>>>>>>> ca7e29fcd9d9536b31d2d5110ca396e281cc3837
 }

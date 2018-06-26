@@ -21,7 +21,7 @@ input{
 .container h1{
     margin-bottom: 2%;
 }
-.col-sm-6{
+.col-sm-6,.col-sm-8{
     margin: auto;
 }
 #join_Button{

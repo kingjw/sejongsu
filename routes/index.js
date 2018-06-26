@@ -23,6 +23,9 @@ router.get('/sejongsu/main', function(req, res) {
 router.get('/sejongsu/mypage', function(req, res) {
   res.render('mypage', { title: 'Express' });
 });
+router.get('/sejongsu/userSearch', function(req, res) {
+  res.render('userSearch', { title: 'Express' });
+});
 
 
 router.post('/gologin',function(req,res,next){
@@ -79,6 +82,22 @@ router.post('/gologinP',function(req,res,next){
       }
     }
   });
+});
+
+router.get('/userSearch', function(req, res) {
+  if (req.session.authId) {
+  res.render('userSearch', {
+    user : req.session.authId,
+    title:'사용자 검색',
+    jobPart:req.session.job_Part,
+  });
+  }
+  else {
+    res.render('userSearch', {
+      user: undefined,
+      title:'사용자 검색'
+    });
+  }
 });
 
 module.exports = router;

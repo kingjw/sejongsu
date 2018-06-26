@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 /* GET home page. */
+
 router.get('/sejongsu/login', function(req, res) {
   res.render('login', { title: 'Express' });
 });
@@ -13,6 +14,7 @@ router.get('/sejongsu/join', function(req, res) {
 });
 router.get('/sejongsu/joinP', function(req, res) {
   res.render('joinP', { title: 'Express' });
+
 });
 
 module.exports = router;
